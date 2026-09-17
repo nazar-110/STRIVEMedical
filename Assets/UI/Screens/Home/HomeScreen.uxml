@@ -1,0 +1,24 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Styles/theme.uss?fileID=7433441132597879392&amp;guid=caddab0aa943e7d4e80805e59ff05f47&amp;type=3#theme" />
+    <ui:VisualElement name="home-screen" class="screen">
+        <ui:VisualElement name="top-bar" class="top-bar">
+            <ui:VisualElement name="top-bar-left">
+                <ui:Button text="Quit" name="Quit-button" class="btn-outline-red btn-lg btn btn-full" />
+            </ui:VisualElement>
+            <ui:VisualElement name="top-bar-right" style="flex-direction: row; align-items: center;">
+                <ui:VisualElement name="notification-button-slot" />
+                <ui:VisualElement name="arm-status-slot" style="margin-left: 12px;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="main-content" style="flex-grow: 1; align-items: center; justify-content: center; flex-direction: column; padding: 16px;">
+            <ui:VisualElement name="logo-container" style="align-items: center; margin-bottom: 40px;">
+                <ui:VisualElement name="logo-image" style="width: 240px; height: 34px; background-image: url(&quot;project://database/Assets/UI/Sprites/strive-logo.png?fileID=2800000&amp;guid=1ade7da2de19f9b4e8729fe972c93451&amp;type=3#strive-logo&quot;);" />
+            </ui:VisualElement>
+            <ui:VisualElement name="button-group" style="width: 300px; flex-direction: column;">
+                <ui:Button name="start-button" text="Start" class="btn btn-primary btn-lg btn-full" style="margin-bottom: 16px;" />
+                <ui:Button name="settings-button" text="Settings" class="btn btn-outline btn-lg btn-full" style="margin-bottom: 16px;" />
+                <ui:Button name="logout-button" text="Log Out" class="btn btn-outline-red btn-lg btn-full" style="margin-top: 16px;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

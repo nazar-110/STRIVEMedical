@@ -1,0 +1,64 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <!-- ExerciseWarningScreen.uxml | Translated from: app/pages/ExerciseWarning.tsx -->
+    <!-- Place at: Assets/UI/Screens/ExerciseWarning/ExerciseWarningScreen.uxml -->
+    <Style src="../../Styles/theme.uss" />
+    <ui:VisualElement name="exercise-warning-screen" class="screen" style="align-items: center; justify-content: center;">
+        <ui:VisualElement name="top-bar" class="top-bar">
+            <ui:VisualElement name="top-bar-left">
+                <ui:VisualElement name="logo-image" style="width: 140px; height: 20px; background-image: url('project://database/Assets/UI/Sprites/strive-logo.png');"/>
+            </ui:VisualElement>
+            <ui:VisualElement name="top-bar-right" style="flex-direction: row; align-items: center;">
+                <ui:VisualElement name="notification-button-slot"/>
+                <ui:VisualElement name="arm-status-slot" style="margin-left: 12px;"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:VisualElement name="card-container" class="card" style="width: 600px; max-width: 90%; flex-direction: column;">
+
+            <!-- INSTRUCTION PANEL -->
+            <ui:VisualElement name="instruction-panel" style="flex-direction: column; padding: 32px; align-items: center;">
+                <ui:VisualElement style="width: 80px; height: 80px; border-radius: 40px; background-color: rgb(219,234,254); align-items: center; justify-content: center; margin-bottom: 16px;">
+                    <ui:Label text="⚠" style="font-size: 40px; color: rgb(37,99,235);"/>
+                </ui:VisualElement>
+                <ui:Label text="Please Home the Device" class="text-2xl font-bold" style="margin-bottom: 24px; color: rgb(17,24,39); -unity-text-align: upper-center;"/>
+                <ui:VisualElement style="background-color: rgb(243,244,246); border-radius: 8px; padding: 24px; width: 100%; margin-bottom: 16px;">
+                    <ui:Label text="Before starting the exercise, please complete the following steps:" class="text-sm font-medium" style="color: rgb(55,65,81); margin-bottom: 12px; white-space: normal;"/>
+                    <ui:Label text="1. Ensure nothing is obstructing the arm's movement" class="text-sm" style="color: rgb(75,85,99); margin-bottom: 8px; white-space: normal;"/>
+                    <ui:Label text="2. Make sure you have enough space around the device" class="text-sm" style="color: rgb(75,85,99); margin-bottom: 8px; white-space: normal;"/>
+                    <ui:Label text="3. Make sure to home the device" class="text-sm" style="color: rgb(75,85,99); margin-bottom: 8px; white-space: normal;"/>
+                    <ui:Label text="4. Wait for the arm to complete its homing sequence" class="text-sm" style="color: rgb(75,85,99); white-space: normal;"/>
+                </ui:VisualElement>
+                <ui:Label text="Once the device has completed homing, click the button below to continue." class="text-sm" style="color: rgb(75,85,99); margin-bottom: 24px; -unity-text-align: upper-center; white-space: normal;"/>
+                <ui:VisualElement style="flex-direction: row; justify-content: center;">
+                    <ui:Button name="instr-cancel-btn" text="Cancel" class="btn btn-outline btn-lg" style="margin-right: 16px; width: 140px;"/>
+                    <ui:Button name="instr-next-btn" text="Next" class="btn btn-accent btn-lg" style="width: 140px;"/>
+                </ui:VisualElement>
+            </ui:VisualElement>
+
+            <!-- CONFIRM PANEL — hidden by default -->
+            <ui:VisualElement name="confirm-panel" style="flex-direction: column; padding: 32px; align-items: center; display: none;">
+                <ui:VisualElement style="width: 80px; height: 80px; border-radius: 40px; background-color: rgb(220,252,231); align-items: center; justify-content: center; margin-bottom: 16px;">
+                    <ui:Label text="✓" style="font-size: 40px; color: rgb(22,163,74);"/>
+                </ui:VisualElement>
+                <ui:Label text="Is the Device Homed?" class="text-2xl font-bold" style="margin-bottom: 16px; color: rgb(17,24,39); -unity-text-align: upper-center;"/>
+                <ui:Label text="Confirm that the device has successfully completed the homing sequence and is in the correct starting position."
+                    class="text-sm" style="color: rgb(75,85,99); margin-bottom: 16px; -unity-text-align: upper-center; white-space: normal;"/>
+                <ui:VisualElement style="background-color: rgb(254,252,232); border-radius: 8px; border-width: 1px; border-color: rgb(253,230,138); padding: 16px; width: 100%; margin-bottom: 24px; align-items: center;">
+                    <ui:Label text="⚠️ Do not proceed unless the device is properly homed" class="text-sm" style="color: rgb(133,77,14); -unity-text-align: upper-center; white-space: normal;"/>
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-direction: row; justify-content: center;">
+                    <ui:Button name="confirm-back-btn" text="Go Back" class="btn btn-outline btn-lg" style="margin-right: 16px; width: 140px;"/>
+                    <ui:Button name="confirm-homed-btn" text="Confirm Homed" class="btn btn-accent btn-lg" style="width: 160px;"/>
+                </ui:VisualElement>
+            </ui:VisualElement>
+
+            <!-- COUNTDOWN PANEL — hidden by default -->
+            <ui:VisualElement name="countdown-panel" style="flex-direction: column; padding: 64px 32px; align-items: center; display: none;">
+                <ui:Label text="Starting in..." class="text-lg" style="color: rgb(75,85,99); margin-bottom: 16px;"/>
+                <ui:Label name="countdown-text" text="3" style="font-size: 120px; -unity-font-style: bold; color: rgb(142,165,140); -unity-text-align: upper-center;"/>
+                <ui:Label name="starting-text" text="Starting Exercise!" style="font-size: 24px; -unity-font-style: bold; color: rgb(142,165,140); display: none; -unity-text-align: upper-center;"/>
+            </ui:VisualElement>
+
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

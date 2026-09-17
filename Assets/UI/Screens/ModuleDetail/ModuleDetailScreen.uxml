@@ -1,0 +1,176 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <!--
+        ModuleDetailScreen.uxml
+        Translated from: app/pages/ModuleDetail.tsx
+        Place at: Assets/UI/Screens/ModuleDetail/ModuleDetailScreen.uxml
+    -->
+    <Style src="../../Styles/theme.uss" />
+
+    <ui:VisualElement name="module-detail-screen" class="screen">
+
+        <!-- Top bar -->
+        <ui:VisualElement name="top-bar" class="top-bar">
+            <ui:VisualElement name="top-bar-left" style="flex-direction: row; align-items: center;">
+                <ui:Button name="back-button" text="←" class="btn btn-ghost btn-icon" style="margin-right: 12px;"/>
+                <ui:VisualElement name="logo-image" style="width: 140px; height: 20px; background-image: url('project://database/Assets/UI/Sprites/strive-logo.png'); margin-right: 12px;"/>
+                <ui:Label name="module-name-text" text="Module Name" class="text-xl font-semibold" style="color: rgb(17,24,39);"/>
+            </ui:VisualElement>
+            <ui:VisualElement name="top-bar-right" style="flex-direction: row; align-items: center;">
+                <!-- Circular progress — C# draws this via ImmediateModeElement or sets fill -->
+                <ui:VisualElement name="circular-progress-container" style="width: 64px; height: 64px; align-items: center; justify-content: center; margin-right: 12px;">
+                    <ui:Label name="circular-progress-text" text="75%" class="text-sm font-semibold" style="color: rgb(17,24,39);"/>
+                </ui:VisualElement>
+                <ui:VisualElement name="notification-button-slot"/>
+                <ui:VisualElement name="arm-status-slot" style="margin-left: 12px;"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!-- Scrollable content -->
+        <ui:ScrollView name="scroll-view" style="flex-grow: 1; padding-top: 80px;">
+            <ui:VisualElement name="content" style="padding: 24px; flex-direction: column;">
+
+                <!-- Tab bar — Exercises / Progress -->
+                <ui:VisualElement name="tab-bar"
+                    style="flex-direction: row; background-color: rgb(31,41,55); border-radius: 8px; padding: 4px; width: 280px; margin-bottom: 24px;">
+                    <ui:Button name="tab-exercises-btn" text="Exercises" class="tab-btn tab-btn--active"
+                        style="color: rgb(255,255,255); background-color: rgb(37,99,235);"/>
+                    <ui:Button name="tab-progress-btn" text="Progress" class="tab-btn"
+                        style="color: rgb(156,163,175); background-color: transparent;"/>
+                </ui:VisualElement>
+
+                <!-- EXERCISES PANEL -->
+                <ui:VisualElement name="exercises-panel" style="flex-direction: row;">
+
+                    <!-- Left — current exercise card (dark) -->
+                    <ui:VisualElement name="current-exercise-card"
+                        style="flex: 1; margin-right: 24px; background-color: rgb(31,41,55); border-radius: 8px; padding: 24px; flex-direction: column;">
+
+                        <!-- Video placeholder -->
+                        <ui:VisualElement name="video-placeholder"
+                            style="background-color: rgb(55,65,81); border-radius: 8px; height: 200px; align-items: center; justify-content: center; margin-bottom: 24px; position: relative;">
+                            <ui:Label text="▶" style="font-size: 48px; color: rgb(107,114,128);"/>
+                            <ui:Label name="exercise-number-text" text="Exercise 20"
+                                style="position: absolute; top: 16px; left: 16px; font-size: 12px; color: rgb(156,163,175);"/>
+                        </ui:VisualElement>
+
+                        <ui:Label name="exercise-title-text" text="Needle Targeting"
+                            class="text-2xl font-semibold" style="color: rgb(255,255,255); margin-bottom: 12px;"/>
+                        <ui:Label name="exercise-desc-text" text="Description"
+                            class="text-sm" style="color: rgb(209,213,219); margin-bottom: 16px; white-space: normal;"/>
+
+                        <ui:Label text="How to succeed:" class="text-sm font-semibold"
+                            style="color: rgb(156,163,175); margin-bottom: 4px;"/>
+                        <ui:Label name="exercise-instr-text" text="Instructions"
+                            class="text-sm" style="color: rgb(209,213,219); margin-bottom: 24px; white-space: normal;"/>
+
+                        <ui:VisualElement style="flex-direction: row; margin-bottom: 24px;">
+                            <ui:VisualElement style="flex: 1; flex-direction: column;">
+                                <ui:Label text="Passing score" style="font-size: 11px; color: rgb(156,163,175); margin-bottom: 4px;"/>
+                                <ui:Label name="passing-score-text" text="80" class="text-2xl font-semibold" style="color: rgb(255,255,255);"/>
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex: 1; flex-direction: column;">
+                                <ui:Label text="Reps" style="font-size: 11px; color: rgb(156,163,175); margin-bottom: 4px;"/>
+                                <ui:Label name="reps-text" text="10" class="text-2xl font-semibold" style="color: rgb(255,255,255);"/>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+
+                        <ui:Button name="start-exercise-button" text="Start Exercise"
+                            class="btn btn-blue btn-lg btn-full"/>
+                    </ui:VisualElement>
+
+                    <!-- Right — exercise list by category -->
+                    <ui:VisualElement name="exercise-list-container" style="flex: 1; flex-direction: column;">
+                        <!-- Category groups injected by C# -->
+                        <ui:VisualElement name="exercise-list" style="flex-direction: column;"/>
+                    </ui:VisualElement>
+
+                </ui:VisualElement>
+
+                <!-- PROGRESS PANEL — hidden by default -->
+                <ui:VisualElement name="progress-panel" style="flex-direction: column; display: none;">
+                    <ui:VisualElement style="flex-direction: row; margin-bottom: 24px;">
+
+                        <!-- Module Progress card -->
+                        <ui:VisualElement class="card" style="flex: 1; margin-right: 16px;">
+                            <ui:VisualElement class="card-header">
+                                <ui:Label text="Module Progress" class="card-title"/>
+                            </ui:VisualElement>
+                            <ui:VisualElement class="card-content" style="flex-direction: column;">
+
+                                <ui:VisualElement style="flex-direction: row; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                                    <ui:Label text="Overall Completion" class="text-sm font-medium"/>
+                                    <ui:Label name="overall-progress-text" text="75%" class="text-2xl font-bold"/>
+                                </ui:VisualElement>
+                                <ui:VisualElement class="progress-track" style="margin-bottom: 16px;">
+                                    <ui:VisualElement name="overall-progress-fill" class="progress-fill" style="width: 75%; background-color: rgb(34,197,94);"/>
+                                </ui:VisualElement>
+
+                                <ui:VisualElement style="flex-direction: row; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                                    <ui:Label text="Exercises Completed" class="text-sm font-medium"/>
+                                    <ui:Label name="exercises-completed-text" text="3/6" class="text-lg font-semibold"/>
+                                </ui:VisualElement>
+                                <ui:VisualElement class="progress-track" style="margin-bottom: 24px;">
+                                    <ui:VisualElement name="exercises-completed-fill" class="progress-fill" style="width: 50%; background-color: rgb(59,130,246);"/>
+                                </ui:VisualElement>
+
+                                <!-- Stats 2x2 grid -->
+                                <ui:VisualElement style="flex-direction: row; flex-wrap: wrap;">
+                                    <ui:VisualElement style="width: 50%; padding: 4px;">
+                                        <ui:VisualElement style="background-color: rgb(249,250,251); border-radius: 8px; padding: 16px;">
+                                            <ui:Label text="Time Spent" style="font-size: 11px; color: rgb(107,114,128); margin-bottom: 4px;"/>
+                                            <ui:Label name="time-spent-text" text="12h 34m" class="text-2xl font-bold"/>
+                                        </ui:VisualElement>
+                                    </ui:VisualElement>
+                                    <ui:VisualElement style="width: 50%; padding: 4px;">
+                                        <ui:VisualElement style="background-color: rgb(249,250,251); border-radius: 8px; padding: 16px;">
+                                            <ui:Label text="Avg. Accuracy" style="font-size: 11px; color: rgb(107,114,128); margin-bottom: 4px;"/>
+                                            <ui:Label name="avg-accuracy-text" text="89%" class="text-2xl font-bold"/>
+                                        </ui:VisualElement>
+                                    </ui:VisualElement>
+                                    <ui:VisualElement style="width: 50%; padding: 4px;">
+                                        <ui:VisualElement style="background-color: rgb(249,250,251); border-radius: 8px; padding: 16px;">
+                                            <ui:Label text="Sessions" style="font-size: 11px; color: rgb(107,114,128); margin-bottom: 4px;"/>
+                                            <ui:Label name="sessions-text" text="18" class="text-2xl font-bold"/>
+                                        </ui:VisualElement>
+                                    </ui:VisualElement>
+                                    <ui:VisualElement style="width: 50%; padding: 4px;">
+                                        <ui:VisualElement style="background-color: rgb(249,250,251); border-radius: 8px; padding: 16px;">
+                                            <ui:Label text="Streak" style="font-size: 11px; color: rgb(107,114,128); margin-bottom: 4px;"/>
+                                            <ui:Label name="streak-text" text="7 days" class="text-2xl font-bold"/>
+                                        </ui:VisualElement>
+                                    </ui:VisualElement>
+                                </ui:VisualElement>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+
+                        <!-- Recent Activity card -->
+                        <ui:VisualElement class="card" style="flex: 1;">
+                            <ui:VisualElement class="card-header">
+                                <ui:Label text="Recent Activity" class="card-title"/>
+                            </ui:VisualElement>
+                            <ui:VisualElement class="card-content">
+                                <!-- Activity rows injected by C# -->
+                                <ui:VisualElement name="activity-list" style="flex-direction: column;"/>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+
+                    </ui:VisualElement>
+
+                    <!-- Exercise Progress Breakdown card -->
+                    <ui:VisualElement class="card">
+                        <ui:VisualElement class="card-header">
+                            <ui:Label text="Exercise Progress Breakdown" class="card-title"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="card-content">
+                            <ui:VisualElement name="breakdown-list" style="flex-direction: column;"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+
+                </ui:VisualElement>
+
+            </ui:VisualElement>
+        </ui:ScrollView>
+
+    </ui:VisualElement>
+
+</ui:UXML>

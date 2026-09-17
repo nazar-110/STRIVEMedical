@@ -1,0 +1,134 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <!-- LessonCompleteScreen.uxml | Translated from: app/pages/LessonComplete.tsx -->
+    <!-- Place at: Assets/UI/Screens/LessonComplete/LessonCompleteScreen.uxml -->
+    <Style src="../../Styles/theme.uss" />
+    <ui:VisualElement name="lesson-complete-screen" class="screen">
+
+        <ui:VisualElement name="top-bar" class="top-bar">
+            <ui:Button name="back-button" text="←" class="btn btn-ghost btn-icon"/>
+            <ui:VisualElement name="top-bar-right" style="flex-direction: row; align-items: center;">
+                <ui:VisualElement name="notification-button-slot"/>
+                <ui:VisualElement name="arm-status-slot" style="margin-left: 12px;"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <ui:ScrollView style="flex-grow: 1; padding-top: 80px;">
+            <ui:VisualElement style="padding: 24px; max-width: 960px; margin-left: auto; margin-right: auto; flex-direction: column;">
+
+                <!-- Hero section — trophy + title -->
+                <ui:VisualElement style="align-items: center; margin-bottom: 32px;">
+                    <ui:VisualElement style="width: 80px; height: 80px; border-radius: 40px; background-color: rgb(34,197,94); align-items: center; justify-content: center; margin-bottom: 16px;">
+                        <ui:Label text="🏆" style="font-size: 40px;"/>
+                    </ui:VisualElement>
+                    <ui:Label text="Lesson Complete!" style="font-size: 36px; -unity-font-style: normal; color: rgb(17,24,39); -unity-text-align: upper-center; margin-bottom: 8px;"/>
+                    <ui:Label text="Congratulations on finishing the exercise" style="font-size: 20px; color: rgb(75,85,99); -unity-text-align: upper-center;"/>
+                </ui:VisualElement>
+
+                <!-- Performance stats card -->
+                <ui:VisualElement class="card" style="margin-bottom: 24px;">
+                    <ui:VisualElement class="card-header">
+                        <ui:Label text="Your Performance" class="card-title"/>
+                    </ui:VisualElement>
+                    <ui:VisualElement class="card-content">
+                        <ui:VisualElement style="flex-direction: row;">
+                            <ui:VisualElement style="flex: 1; background-color: rgb(236,236,240); border-radius: 8px; padding: 16px; margin-right: 12px; flex-direction: column;">
+                                <ui:Label text="◎  Accuracy" class="text-sm" style="color: rgb(113,113,130); margin-bottom: 8px;"/>
+                                <ui:Label name="accuracy-text" text="95%" style="font-size: 30px; color: rgb(17,24,39);"/>
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex: 1; background-color: rgb(236,236,240); border-radius: 8px; padding: 16px; margin-right: 12px; flex-direction: column;">
+                                <ui:Label text="⏱  Time" class="text-sm" style="color: rgb(113,113,130); margin-bottom: 8px;"/>
+                                <ui:Label name="time-text" text="2:30" style="font-size: 30px; color: rgb(17,24,39);"/>
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex: 1; background-color: rgb(236,236,240); border-radius: 8px; padding: 16px; margin-right: 12px; flex-direction: column;">
+                                <ui:Label text="📈  Score" class="text-sm" style="color: rgb(113,113,130); margin-bottom: 8px;"/>
+                                <ui:Label name="score-text" text="985" style="font-size: 30px; color: rgb(17,24,39);"/>
+                            </ui:VisualElement>
+                            <ui:VisualElement style="flex: 1; background-color: rgb(236,236,240); border-radius: 8px; padding: 16px; flex-direction: column;">
+                                <ui:Label text="🏆  Rank" class="text-sm" style="color: rgb(113,113,130); margin-bottom: 8px;"/>
+                                <ui:Label name="rank-text" text="#3" style="font-size: 30px; color: rgb(17,24,39);"/>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+
+                <!-- Leaderboard card -->
+                <ui:VisualElement class="card" style="margin-bottom: 24px;">
+                    <ui:VisualElement class="card-header">
+                        <ui:Label text="Leaderboard" class="card-title"/>
+                    </ui:VisualElement>
+                    <ui:VisualElement class="card-content">
+                        <ui:VisualElement name="leaderboard-list" style="flex-direction: column;"/>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+
+                <!-- Feedback card -->
+                <ui:VisualElement class="card" style="margin-bottom: 24px;">
+                    <ui:VisualElement class="card-header">
+                        <ui:Label text="Performance Feedback &amp; Areas for Improvement" class="card-title"/>
+                    </ui:VisualElement>
+                    <ui:VisualElement class="card-content" style="flex-direction: column;">
+
+                        <!-- Strengths -->
+                        <ui:VisualElement style="margin-bottom: 24px;">
+                            <ui:VisualElement style="flex-direction: row; align-items: center; margin-bottom: 8px;">
+                                <ui:Label text="✓" style="color: rgb(22,163,74); font-size: 18px; margin-right: 8px;"/>
+                                <ui:Label text="What You Did Well" class="text-sm font-semibold" style="color: rgb(22,163,74);"/>
+                            </ui:VisualElement>
+                            <ui:Label text="• Excellent accuracy: Your 95% accuracy rate shows strong control and precision throughout the exercise."
+                                class="text-sm" style="color: rgb(17,24,39); margin-left: 28px; margin-bottom: 8px; white-space: normal;"/>
+                            <ui:Label text="• Consistent pace: You maintained a steady rhythm, which is important for building muscle memory."
+                                class="text-sm" style="color: rgb(17,24,39); margin-left: 28px; white-space: normal;"/>
+                        </ui:VisualElement>
+
+                        <!-- Areas for Improvement -->
+                        <ui:VisualElement style="margin-bottom: 24px;">
+                            <ui:VisualElement style="flex-direction: row; align-items: center; margin-bottom: 8px;">
+                                <ui:Label text="⚠" style="color: rgb(234,88,12); font-size: 18px; margin-right: 8px;"/>
+                                <ui:Label text="Areas for Improvement" class="text-sm font-semibold" style="color: rgb(234,88,12);"/>
+                            </ui:VisualElement>
+                            <ui:Label text="• Range of motion: You reached only 85% of the target range. Try to extend your arm 3-4 inches further on each repetition."
+                                class="text-sm" style="color: rgb(17,24,39); margin-left: 28px; margin-bottom: 8px; white-space: normal;"/>
+                            <ui:Label text="• Speed consistency: There were 3 instances where movements were too rapid. Focus on controlled, deliberate movements."
+                                class="text-sm" style="color: rgb(17,24,39); margin-left: 28px; margin-bottom: 8px; white-space: normal;"/>
+                            <ui:Label text="• Rest periods: You took shorter breaks than recommended. Adequate rest between sets prevents fatigue."
+                                class="text-sm" style="color: rgb(17,24,39); margin-left: 28px; white-space: normal;"/>
+                        </ui:VisualElement>
+
+                        <!-- Tips -->
+                        <ui:VisualElement style="margin-bottom: 24px;">
+                            <ui:VisualElement style="flex-direction: row; align-items: center; margin-bottom: 8px;">
+                                <ui:Label text="💡" style="font-size: 18px; margin-right: 8px;"/>
+                                <ui:Label text="Tips for Next Session" class="text-sm font-semibold" style="color: rgb(37,99,235);"/>
+                            </ui:VisualElement>
+                            <ui:Label text="• Start with gentle warm-up exercises to increase your range of motion baseline."
+                                class="text-sm" style="color: rgb(17,24,39); margin-left: 28px; margin-bottom: 8px; white-space: normal;"/>
+                            <ui:Label text="• Count to 3 during each movement phase to maintain consistent speed."
+                                class="text-sm" style="color: rgb(17,24,39); margin-left: 28px; margin-bottom: 8px; white-space: normal;"/>
+                            <ui:Label text="• Set a timer for 30-second rest periods between sets to ensure adequate recovery."
+                                class="text-sm" style="color: rgb(17,24,39); margin-left: 28px; margin-bottom: 8px; white-space: normal;"/>
+                            <ui:Label text="• Focus on quality over speed - proper form leads to better long-term outcomes."
+                                class="text-sm" style="color: rgb(17,24,39); margin-left: 28px; white-space: normal;"/>
+                        </ui:VisualElement>
+
+                        <!-- Next Milestone -->
+                        <ui:VisualElement style="background-color: rgba(52,76,61,0.1); border-radius: 8px; border-width: 1px; border-color: rgba(52,76,61,0.2); padding: 16px; flex-direction: row; align-items: flex-start;">
+                            <ui:Label text="📈" style="font-size: 18px; margin-right: 12px;"/>
+                            <ui:VisualElement style="flex: 1; flex-direction: column;">
+                                <ui:Label text="Next Milestone" class="text-sm font-semibold" style="margin-bottom: 4px;"/>
+                                <ui:Label text="Aim to increase your range of motion by 5% and maintain 96% accuracy in your next session. This will move you closer to rank #2!"
+                                    class="text-sm" style="color: rgb(75,85,99); white-space: normal;"/>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+
+                    </ui:VisualElement>
+                </ui:VisualElement>
+
+                <!-- Back to Dashboard button -->
+                <ui:VisualElement style="align-items: center; margin-bottom: 32px;">
+                    <ui:Button name="back-to-dashboard-btn" text="Back to Dashboard" class="btn btn-primary btn-lg" style="width: 240px;"/>
+                </ui:VisualElement>
+
+            </ui:VisualElement>
+        </ui:ScrollView>
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,0 +1,20 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <!-- NotificationsScreen.uxml | app/pages/Notifications.tsx -->
+    <!-- Place at: Assets/UI/Screens/Notifications/NotificationsScreen.uxml -->
+    <Style src="../../Styles/theme.uss" />
+    <ui:VisualElement name="notifications-screen" class="screen">
+        <ui:VisualElement name="top-bar" class="top-bar">
+            <ui:VisualElement style="flex-direction: row; align-items: center;">
+                <ui:Button name="back-button" text="←" class="btn btn-ghost btn-icon" style="margin-right: 12px;"/>
+                <ui:VisualElement name="logo-image" style="width: 140px; height: 20px; background-image: url('project://database/Assets/UI/Sprites/strive-logo.png');"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:ScrollView style="flex-grow: 1; padding-top: 80px;">
+            <ui:VisualElement style="padding: 24px; flex-direction: column; max-width: 672px;">
+                <ui:Label text="Notifications" class="text-2xl font-bold" style="margin-bottom: 24px; color: rgb(17,24,39);"/>
+                <!-- Notification rows injected by NotificationsController.cs -->
+                <ui:VisualElement name="notification-list" style="flex-direction: column;"/>
+            </ui:VisualElement>
+        </ui:ScrollView>
+    </ui:VisualElement>
+</ui:UXML>

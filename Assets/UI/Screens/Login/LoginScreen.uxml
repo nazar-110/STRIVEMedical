@@ -1,0 +1,45 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <!--
+        LoginScreen.uxml
+        Translated from: app/pages/Login.tsx
+        Place at: Assets/UI/Screens/Login/LoginScreen.uxml
+    -->
+    <Style src="../../Styles/theme.uss" />
+
+    <ui:VisualElement name="login-screen" class="screen" style="align-items: center; justify-content: center;">
+
+        <ui:VisualElement name="login-container" style="width: 400px; flex-direction: column; align-items: stretch;">
+
+            <!-- Logo — mirrors <StriveLogo size="lg" /> -->
+            <ui:VisualElement name="logo-container" style="align-items: center; margin-bottom: 40px;">
+                <ui:VisualElement name="logo-image" style="width: 240px; height: 34px; background-image: url('project://database/Assets/UI/Sprites/strive-logo.png');"/>
+            </ui:VisualElement>
+
+            <!-- Form — mirrors <form onSubmit={handleLogin}> -->
+            <ui:VisualElement name="form" style="flex-direction: column;">
+
+                <!-- Username field — mirrors <Input id="email" type="text" /> -->
+                <ui:VisualElement name="username-group" style="flex-direction: column; margin-bottom: 16px;">
+                    <ui:Label text="Username/Email" class="text-sm font-medium" style="margin-bottom: 6px; color: rgb(17,24,39);"/>
+                    <ui:TextField name="username-input" class="input-field" placeholder-text="Enter your username or email" />
+                </ui:VisualElement>
+
+                <!-- Password field — mirrors <Input id="password" type="password" /> -->
+                <ui:VisualElement name="password-group" style="flex-direction: column; margin-bottom: 24px;">
+                    <ui:Label text="Password" class="text-sm font-medium" style="margin-bottom: 6px; color: rgb(17,24,39);"/>
+                    <ui:TextField name="password-input" class="input-field" password="true" placeholder-text="Enter your password" />
+                </ui:VisualElement>
+
+                <!-- Error label — hidden by default, shown on validation fail -->
+                <ui:Label name="error-label" text="" class="text-sm" style="color: rgb(220,38,38); margin-bottom: 12px; display: none;"/>
+
+                <!-- Login button — mirrors <Button type="submit">Login</Button> -->
+                <ui:Button name="login-button" text="Login" class="btn btn-primary btn-lg btn-full" />
+
+            </ui:VisualElement>
+
+        </ui:VisualElement>
+
+    </ui:VisualElement>
+
+</ui:UXML>

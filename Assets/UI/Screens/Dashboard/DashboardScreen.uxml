@@ -1,0 +1,155 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <!--
+        DashboardScreen.uxml
+        Translated from: app/pages/Dashboard.tsx
+        Place at: Assets/UI/Screens/Dashboard/DashboardScreen.uxml
+    -->
+    <Style src="../../Styles/theme.uss" />
+
+    <ui:VisualElement name="dashboard-screen" class="screen">
+
+        <!-- Top bar -->
+        <ui:VisualElement name="top-bar" class="top-bar">
+            <ui:VisualElement name="top-bar-left" style="flex-direction: row; align-items: center;">
+                <ui:Button name="back-button" text="←" class="btn btn-ghost btn-icon" style="margin-right: 12px;"/>
+                <ui:VisualElement name="logo-image" style="width: 140px; height: 20px; background-image: url('project://database/Assets/UI/Sprites/strive-logo.png');"/>
+            </ui:VisualElement>
+            <ui:VisualElement name="top-bar-right" style="flex-direction: row; align-items: center;">
+                <ui:VisualElement name="notification-button-slot"/>
+                <ui:VisualElement name="arm-status-slot" style="margin-left: 12px;"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!-- Scrollable content -->
+        <ui:ScrollView name="scroll-view" style="flex-grow: 1; padding-top: 80px;">
+            <ui:VisualElement name="content" style="padding: 24px; flex-direction: column;">
+
+                <!-- Page title -->
+                <ui:Label text="Dashboard" class="text-2xl font-bold" style="margin-bottom: 24px; color: rgb(17,24,39);"/>
+
+                <!-- Stats cards row — mirrors grid grid-cols-3 -->
+                <ui:VisualElement name="stats-row" style="flex-direction: row; margin-bottom: 24px;">
+
+                    <!-- Progress Overview card -->
+                    <ui:VisualElement name="progress-card" class="card"
+                        style="flex: 1; margin-right: 16px; cursor: link;">
+                        <ui:VisualElement class="card-header">
+                            <ui:Label text="Progress Overview" class="card-title text-sm"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="card-content">
+                            <ui:VisualElement style="flex-direction: row; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                                <ui:Label text="Modules completed" class="text-sm" style="color: rgb(75,85,99);"/>
+                                <ui:Label name="modules-completed-text" text="0/3" class="text-sm font-medium"/>
+                            </ui:VisualElement>
+                            <ui:VisualElement class="progress-track">
+                                <ui:VisualElement name="modules-progress-fill" class="progress-fill" style="width: 0%;"/>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+
+                    <!-- Average Accuracy card -->
+                    <ui:VisualElement name="accuracy-card" class="card" style="flex: 1; margin-right: 16px;">
+                        <ui:VisualElement class="card-header">
+                            <ui:Label text="Average Accuracy" class="card-title text-sm"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="card-content" style="flex-direction: row; align-items: center;">
+                            <ui:Label text="◎" style="font-size: 20px; color: rgb(59,130,246); margin-right: 8px;"/>
+                            <ui:Label name="accuracy-text" text="92%" class="text-2xl font-bold"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+
+                    <!-- Total Time card -->
+                    <ui:VisualElement name="time-card" class="card" style="flex: 1;">
+                        <ui:VisualElement class="card-header">
+                            <ui:Label text="Total Time on Device" class="card-title text-sm"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="card-content" style="flex-direction: row; align-items: center;">
+                            <ui:Label text="⏱" style="font-size: 20px; color: rgb(34,197,94); margin-right: 8px;"/>
+                            <ui:Label name="total-time-text" text="5:45" class="text-2xl font-bold"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+
+                </ui:VisualElement>
+
+                <!-- Tab bar — mirrors Tabs component -->
+                <ui:VisualElement name="tab-bar" class="tab-bar">
+                    <ui:Button name="tab-modules-btn"     text="Modules"             class="tab-btn tab-btn--active"/>
+                    <ui:Button name="tab-performance-btn" text="Performance"         class="tab-btn"/>
+                    <ui:Button name="tab-leaderboard-btn" text="Overall Leaderboard" class="tab-btn"/>
+                </ui:VisualElement>
+
+                <!-- MODULES PANEL -->
+                <ui:VisualElement name="modules-panel" style="flex-direction: column;">
+                    <ui:VisualElement name="modules-card" class="card">
+                        <ui:VisualElement class="card-header">
+                            <ui:Label text="Training Modules" class="card-title"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="card-content">
+                            <!-- Module rows injected here by DashboardController.cs -->
+                            <ui:VisualElement name="module-list" style="flex-direction: column;"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+
+                <!-- PERFORMANCE PANEL — hidden by default -->
+                <ui:VisualElement name="performance-panel" style="flex-direction: column; display: none;">
+                    <ui:VisualElement name="performance-card" class="card">
+                        <ui:VisualElement class="card-header">
+                            <ui:Label text="Performance Metrics" class="card-title"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="card-content">
+                            <!-- Metric rows injected by DashboardController.cs -->
+                            <ui:VisualElement name="performance-list" style="flex-direction: column;"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+
+                <!-- LEADERBOARD PANEL — hidden by default -->
+                <ui:VisualElement name="leaderboard-panel" style="flex-direction: column; display: none;">
+                    <ui:VisualElement style="flex-direction: row;">
+
+                        <!-- Global Leaderboard card -->
+                        <ui:VisualElement name="global-leaderboard-card" class="card" style="flex: 1; margin-right: 16px;">
+                            <ui:VisualElement class="card-header">
+                                <ui:Label text="Global Leaderboard" class="card-title"/>
+                            </ui:VisualElement>
+                            <ui:VisualElement class="card-content">
+                                <!-- Leaderboard rows injected by DashboardController.cs -->
+                                <ui:VisualElement name="leaderboard-list" style="flex-direction: column;"/>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+
+                        <!-- Individual Stats card -->
+                        <ui:VisualElement name="individual-stats-card" class="card" style="flex: 1;">
+                            <ui:VisualElement class="card-header">
+                                <ui:Label text="Individual Stats" class="card-title"/>
+                            </ui:VisualElement>
+                            <ui:VisualElement class="card-content" style="flex-direction: column;">
+                                <ui:VisualElement class="bg-gray-100 rounded-lg p-4" style="margin-bottom: 12px; background-color: rgb(243,244,246); border-radius: 8px; padding: 16px;">
+                                    <ui:Label text="Your Rank" class="text-sm text-gray-500" style="color: rgb(107,114,128);"/>
+                                    <ui:Label name="user-rank-text" text="#3" class="text-3xl font-bold"/>
+                                </ui:VisualElement>
+                                <ui:VisualElement style="margin-bottom: 12px; background-color: rgb(243,244,246); border-radius: 8px; padding: 16px;">
+                                    <ui:Label text="Your Score" class="text-sm" style="color: rgb(107,114,128);"/>
+                                    <ui:Label name="user-score-text" text="9,580" class="text-3xl font-bold"/>
+                                </ui:VisualElement>
+                                <ui:VisualElement style="margin-bottom: 12px; background-color: rgb(243,244,246); border-radius: 8px; padding: 16px;">
+                                    <ui:Label text="Your Accuracy" class="text-sm" style="color: rgb(107,114,128);"/>
+                                    <ui:Label name="user-accuracy-text" text="95%" class="text-3xl font-bold"/>
+                                </ui:VisualElement>
+                                <ui:VisualElement style="background-color: rgb(243,244,246); border-radius: 8px; padding: 16px;">
+                                    <ui:Label text="Best Time" class="text-sm" style="color: rgb(107,114,128);"/>
+                                    <ui:Label name="user-besttime-text" text="2:15" class="text-3xl font-bold"/>
+                                </ui:VisualElement>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+
+                    </ui:VisualElement>
+                </ui:VisualElement>
+
+            </ui:VisualElement>
+        </ui:ScrollView>
+
+    </ui:VisualElement>
+
+</ui:UXML>

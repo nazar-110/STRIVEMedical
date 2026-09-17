@@ -1,0 +1,88 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <!-- SettingsScreen.uxml | Translated from: app/pages/Settings.tsx -->
+    <!-- Place at: Assets/UI/Screens/Settings/SettingsScreen.uxml -->
+    <Style src="../../Styles/theme.uss" />
+    <ui:VisualElement name="settings-screen" class="screen">
+        <ui:VisualElement name="top-bar" class="top-bar">
+            <ui:VisualElement name="top-bar-left" style="flex-direction: row; align-items: center;">
+                <ui:Button name="back-button" text="←" class="btn btn-ghost btn-icon" style="margin-right: 12px;"/>
+            </ui:VisualElement>
+            <ui:VisualElement name="top-bar-right" style="flex-direction: row; align-items: center;">
+                <ui:VisualElement name="notification-button-slot"/>
+                <ui:VisualElement name="arm-status-slot" style="margin-left: 12px;"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:ScrollView style="flex-grow: 1; padding-top: 80px;">
+            <ui:VisualElement style="padding: 24px; max-width: 672px; flex-direction: column;">
+                <ui:VisualElement style="flex-direction: row; align-items: center; margin-bottom: 24px;">
+                    <ui:Label text="⚙" style="font-size: 28px; margin-right: 12px;"/>
+                    <ui:Label text="Settings" class="text-3xl" style="color: rgb(17,24,39);"/>
+                </ui:VisualElement>
+
+                <!-- Sensitivity card -->
+                <ui:VisualElement class="card" style="margin-bottom: 24px;">
+                    <ui:VisualElement class="card-header"><ui:Label text="Sensitivity Settings" class="card-title"/></ui:VisualElement>
+                    <ui:VisualElement class="card-content" style="flex-direction: column;">
+                        <ui:VisualElement style="flex-direction: row; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                            <ui:Label text="Movement Sensitivity" class="text-sm"/>
+                            <ui:Label name="sensitivity-value-text" text="50%" class="text-sm font-semibold"/>
+                        </ui:VisualElement>
+                        <ui:Slider name="sensitivity-slider" low-value="0" high-value="1" value="0.5" style="margin-bottom: 8px;"/>
+                        <ui:Label text="Adjust how sensitive the arm responds to your movements. Higher values mean more responsive controls."
+                            class="text-xs" style="color: rgb(75,85,99); margin-bottom: 16px; white-space: normal;"/>
+                        <ui:VisualElement style="flex-direction: row;">
+                            <ui:Button name="sens-low-btn"  text="Low"    class="btn btn-outline btn-sm" style="flex: 1; margin-right: 8px;"/>
+                            <ui:Button name="sens-med-btn"  text="Medium" class="btn btn-outline btn-sm" style="flex: 1; margin-right: 8px;"/>
+                            <ui:Button name="sens-high-btn" text="High"   class="btn btn-outline btn-sm" style="flex: 1;"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+
+                <!-- Force Feedback card -->
+                <ui:VisualElement class="card" style="margin-bottom: 24px;">
+                    <ui:VisualElement class="card-header"><ui:Label text="Force Feedback Settings" class="card-title"/></ui:VisualElement>
+                    <ui:VisualElement class="card-content" style="flex-direction: column;">
+                        <ui:VisualElement style="flex-direction: row; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                            <ui:Label text="Force Feedback Intensity" class="text-sm"/>
+                            <ui:Label name="force-value-text" text="60%" class="text-sm font-semibold"/>
+                        </ui:VisualElement>
+                        <ui:Slider name="force-slider" low-value="0" high-value="1" value="0.6" style="margin-bottom: 8px;"/>
+                        <ui:Label text="Control the intensity of haptic feedback when the arm interacts with objects. Higher values provide stronger tactile responses."
+                            class="text-xs" style="color: rgb(75,85,99); margin-bottom: 16px; white-space: normal;"/>
+                        <ui:VisualElement style="flex-direction: row;">
+                            <ui:Button name="force-gentle-btn"   text="Gentle"   class="btn btn-outline btn-sm" style="flex: 1; margin-right: 8px;"/>
+                            <ui:Button name="force-moderate-btn" text="Moderate" class="btn btn-outline btn-sm" style="flex: 1; margin-right: 8px;"/>
+                            <ui:Button name="force-strong-btn"   text="Strong"   class="btn btn-outline btn-sm" style="flex: 1;"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+
+                <!-- Save button -->
+                <ui:VisualElement style="align-items: center; margin-bottom: 24px;">
+                    <ui:Button name="save-button" text="Save Settings" class="btn btn-primary btn-lg" style="width: 200px;"/>
+                </ui:VisualElement>
+
+                <!-- Engineering UI card -->
+                <ui:VisualElement class="card" style="margin-bottom: 24px; border-color: rgb(191,219,254);">
+                    <ui:VisualElement class="card-header"><ui:Label text="Advanced" class="card-title" style="color: rgb(37,99,235);"/></ui:VisualElement>
+                    <ui:VisualElement class="card-content" style="flex-direction: column;">
+                        <ui:Label text="Access advanced engineering tools and diagnostics for device configuration and testing."
+                            class="text-sm" style="color: rgb(75,85,99); margin-bottom: 16px; white-space: normal;"/>
+                        <ui:Button name="engineering-btn" text="🔧  Engineering UI" class="btn btn-outline-blue btn-full"/>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+
+                <!-- Logout card -->
+                <ui:VisualElement class="card" style="margin-bottom: 24px; border-color: rgb(252,165,165);">
+                    <ui:VisualElement class="card-header"><ui:Label text="Account" class="card-title" style="color: rgb(220,38,38);"/></ui:VisualElement>
+                    <ui:VisualElement class="card-content" style="flex-direction: column;">
+                        <ui:Label text="Return to the login screen to sign in with a different account."
+                            class="text-sm" style="color: rgb(75,85,99); margin-bottom: 16px; white-space: normal;"/>
+                        <ui:Button name="logout-button" text="Log Out" class="btn btn-outline-red btn-full"/>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+
+            </ui:VisualElement>
+        </ui:ScrollView>
+    </ui:VisualElement>
+</ui:UXML>

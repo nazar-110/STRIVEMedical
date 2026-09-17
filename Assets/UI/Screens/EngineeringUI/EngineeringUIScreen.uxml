@@ -1,0 +1,209 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <!-- EngineeringUIScreen.uxml | app/pages/EngineeringUI.tsx -->
+    <!-- Place at: Assets/UI/Screens/EngineeringUI/EngineeringUIScreen.uxml -->
+    <Style src="../../Styles/theme.uss" />
+    <ui:VisualElement name="engineering-ui-screen" class="screen">
+        <ui:VisualElement name="top-bar" class="top-bar">
+            <ui:VisualElement style="flex-direction: row; align-items: center;">
+                <ui:Button name="back-button" text="←" class="btn btn-ghost btn-icon" style="margin-right: 12px;"/>
+                <ui:VisualElement name="logo-image" style="width: 140px; height: 20px; background-image: url('project://database/Assets/UI/Sprites/strive-logo.png');"/>
+            </ui:VisualElement>
+            <ui:VisualElement name="top-bar-right" style="flex-direction: row; align-items: center;">
+                <ui:VisualElement name="notification-button-slot"/>
+                <ui:VisualElement name="arm-status-slot" style="margin-left: 12px;"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:ScrollView style="flex-grow: 1; padding-top: 80px;">
+            <ui:VisualElement style="padding: 24px; max-width: 1280px; flex-direction: column;">
+
+                <!-- Header -->
+                <ui:VisualElement style="flex-direction: row; align-items: center; margin-bottom: 24px;">
+                    <ui:Label text="🔧" style="font-size: 28px; margin-right: 12px; color: rgb(37,99,235);"/>
+                    <ui:VisualElement>
+                        <ui:Label text="Engineering UI" class="text-3xl font-bold" style="color: rgb(17,24,39);"/>
+                        <ui:Label text="Advanced diagnostics and configuration tools" class="text-sm" style="color: rgb(75,85,99);"/>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+
+                <!-- Warning banner -->
+                <ui:VisualElement style="background-color: rgb(254,252,232); border-radius: 8px; border-width: 1px; border-color: rgb(253,230,138); padding: 16px; margin-bottom: 24px;">
+                    <ui:Label text="⚠️  Engineering Mode: These tools are intended for technical personnel only. Improper configuration may affect device performance."
+                        class="text-sm" style="color: rgb(133,77,14); white-space: normal;"/>
+                </ui:VisualElement>
+
+                <!-- Tab bar -->
+                <ui:VisualElement style="flex-direction: row; border-bottom-width: 1px; border-bottom-color: rgb(229,231,235); margin-bottom: 24px;">
+                    <ui:Button name="tab-diagnostics-btn" text="⚡ Diagnostics"
+                        style="padding: 8px 16px; font-size: 14px; -unity-font-style: bold; border-width: 0; background-color: transparent; color: rgb(37,99,235); border-bottom-width: 2px; border-bottom-color: rgb(37,99,235); cursor: link;"/>
+                    <ui:Button name="tab-calibration-btn" text="⚙ Calibration"
+                        style="padding: 8px 16px; font-size: 14px; -unity-font-style: bold; border-width: 0; background-color: transparent; color: rgb(75,85,99); cursor: link;"/>
+                    <ui:Button name="tab-logs-btn" text="▶ System Logs"
+                        style="padding: 8px 16px; font-size: 14px; -unity-font-style: bold; border-width: 0; background-color: transparent; color: rgb(75,85,99); cursor: link;"/>
+                </ui:VisualElement>
+
+                <!-- DIAGNOSTICS PANEL -->
+                <ui:VisualElement name="diagnostics-panel" style="flex-direction: column;">
+                    <ui:VisualElement style="flex-direction: row; flex-wrap: wrap;">
+
+                        <!-- Device Status card -->
+                        <ui:VisualElement class="card" style="flex: 1; min-width: 300px; margin-right: 16px; margin-bottom: 16px;">
+                            <ui:VisualElement class="card-header"><ui:Label text="Device Status" class="card-title"/></ui:VisualElement>
+                            <ui:VisualElement class="card-content" style="flex-direction: column;">
+                                <ui:VisualElement style="flex-direction: row; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                                    <ui:Label text="Connection Status" class="text-sm" style="color: rgb(75,85,99);"/>
+                                    <ui:Label text="Connected" style="font-size: 12px; background-color: rgb(220,252,231); color: rgb(22,101,52); border-radius: 9999px; padding: 4px 12px; -unity-font-style: bold;"/>
+                                </ui:VisualElement>
+                                <ui:VisualElement style="flex-direction: row; justify-content: space-between; margin-bottom: 12px;">
+                                    <ui:Label text="Firmware Version" class="text-sm" style="color: rgb(75,85,99);"/>
+                                    <ui:Label text="v2.4.1" class="text-sm font-mono"/>
+                                </ui:VisualElement>
+                                <ui:VisualElement style="flex-direction: row; justify-content: space-between; margin-bottom: 12px;">
+                                    <ui:Label text="Hardware Revision" class="text-sm" style="color: rgb(75,85,99);"/>
+                                    <ui:Label text="Rev 3.2" class="text-sm font-mono"/>
+                                </ui:VisualElement>
+                                <ui:VisualElement style="flex-direction: row; justify-content: space-between; margin-bottom: 12px;">
+                                    <ui:Label text="Serial Number" class="text-sm" style="color: rgb(75,85,99);"/>
+                                    <ui:Label text="SM-2024-1234" class="text-sm font-mono"/>
+                                </ui:VisualElement>
+                                <ui:VisualElement style="flex-direction: row; justify-content: space-between;">
+                                    <ui:Label text="Uptime" class="text-sm" style="color: rgb(75,85,99);"/>
+                                    <ui:Label name="uptime-text" text="12h 34m" class="text-sm font-mono"/>
+                                </ui:VisualElement>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+
+                        <!-- Encoder Positions card -->
+                        <ui:VisualElement class="card" style="flex: 1; min-width: 300px; margin-bottom: 16px;">
+                            <ui:VisualElement class="card-header"><ui:Label text="Encoder Positions" class="card-title"/></ui:VisualElement>
+                            <ui:VisualElement class="card-content" style="flex-direction: column;">
+                                <!-- Encoder rows injected by EngineeringUIController.cs -->
+                                <ui:VisualElement name="encoder-list" style="flex-direction: column;"/>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+
+                        <!-- Motor Torque card -->
+                        <ui:VisualElement class="card" style="flex: 1; min-width: 300px; margin-right: 16px; margin-bottom: 16px;">
+                            <ui:VisualElement class="card-header"><ui:Label text="Motor Torque" class="card-title"/></ui:VisualElement>
+                            <ui:VisualElement class="card-content" style="flex-direction: column;">
+                                <ui:VisualElement name="motor-list" style="flex-direction: column;"/>
+                                <ui:Button name="reset-torque-btn" text="Reset Torque Limits" class="btn btn-outline btn-sm btn-full" style="margin-top: 12px;"/>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+
+                        <!-- System Performance card -->
+                        <ui:VisualElement class="card" style="flex: 1; min-width: 300px; margin-bottom: 16px;">
+                            <ui:VisualElement class="card-header"><ui:Label text="📊  System Performance" class="card-title"/></ui:VisualElement>
+                            <ui:VisualElement class="card-content" style="flex-direction: column;">
+                                <ui:VisualElement style="margin-bottom: 16px;">
+                                    <ui:VisualElement style="flex-direction: row; justify-content: space-between; margin-bottom: 8px;">
+                                        <ui:Label text="CPU Usage" class="text-sm" style="color: rgb(75,85,99);"/>
+                                        <ui:Label name="cpu-text" text="42%" class="text-sm font-semibold"/>
+                                    </ui:VisualElement>
+                                    <ui:VisualElement class="progress-track"><ui:VisualElement name="cpu-fill" class="progress-fill" style="width: 42%; background-color: rgb(37,99,235);"/></ui:VisualElement>
+                                </ui:VisualElement>
+                                <ui:VisualElement style="margin-bottom: 16px;">
+                                    <ui:VisualElement style="flex-direction: row; justify-content: space-between; margin-bottom: 8px;">
+                                        <ui:Label text="Memory Usage" class="text-sm" style="color: rgb(75,85,99);"/>
+                                        <ui:Label name="memory-text" text="58%" class="text-sm font-semibold"/>
+                                    </ui:VisualElement>
+                                    <ui:VisualElement class="progress-track"><ui:VisualElement name="memory-fill" class="progress-fill" style="width: 58%; background-color: rgb(37,99,235);"/></ui:VisualElement>
+                                </ui:VisualElement>
+                                <ui:VisualElement style="margin-bottom: 24px;">
+                                    <ui:VisualElement style="flex-direction: row; justify-content: space-between; margin-bottom: 8px;">
+                                        <ui:Label text="Network Latency" class="text-sm" style="color: rgb(75,85,99);"/>
+                                        <ui:Label name="latency-text" text="12ms" class="text-sm font-semibold"/>
+                                    </ui:VisualElement>
+                                    <ui:VisualElement class="progress-track"><ui:VisualElement name="latency-fill" class="progress-fill" style="width: 85%; background-color: rgb(34,197,94);"/></ui:VisualElement>
+                                </ui:VisualElement>
+                                <ui:Button name="perf-test-btn" text="Run Performance Test" class="btn btn-outline btn-full"/>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+
+                    </ui:VisualElement>
+                </ui:VisualElement>
+
+                <!-- CALIBRATION PANEL — hidden by default -->
+                <ui:VisualElement name="calibration-panel" style="flex-direction: column; display: none;">
+                    <ui:VisualElement class="card" style="margin-bottom: 16px;">
+                        <ui:VisualElement class="card-header"><ui:Label text="Device Calibration" class="card-title"/></ui:VisualElement>
+                        <ui:VisualElement class="card-content" style="flex-direction: column;">
+                            <ui:Label text="Calibration ensures accurate sensor readings and precise motor control. Follow the on-screen instructions for each calibration procedure."
+                                class="text-sm" style="color: rgb(75,85,99); margin-bottom: 24px; white-space: normal;"/>
+                            <ui:VisualElement style="flex-direction: row;">
+                                <ui:Button name="motor-cal-btn"  text="⚙ Motor Calibration"  class="btn btn-outline" style="flex: 1; height: 96px; margin-right: 12px; flex-direction: column;"/>
+                                <ui:Button name="sensor-cal-btn" text="⚡ Sensor Calibration" class="btn btn-outline" style="flex: 1; height: 96px; margin-right: 12px; flex-direction: column;"/>
+                                <ui:Button name="zero-pos-btn"   text="🔧 Zero Position"      class="btn btn-outline" style="flex: 1; height: 96px; flex-direction: column;"/>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    
+                    <!-- Command Testing -->
+                    <ui:VisualElement class="card" style="margin-bottom: 16px;">
+                        <ui:VisualElement class="card-header"><ui:Label text="Command Testing" class="card-title"/></ui:VisualElement>
+                        <ui:VisualElement class="card-content" style="flex-direction: column;">
+                            <ui:Label text="Test individual USB CDC commands sent to the device."
+                                class="text-sm" style="color: rgb(75,85,99); margin-bottom: 16px; white-space: normal;"/>
+                            <ui:VisualElement style="flex-direction: row; flex-wrap: wrap;">
+                                <ui:Button name="test-ping-btn" text="CMD_PING" class="btn btn-outline" style="margin-right: 8px; margin-bottom: 8px;"/>
+                                <ui:Button name="test-reset-btn" text="CMD_RESET_DEVICE" class="btn btn-outline" style="margin-right: 8px; margin-bottom: 8px;"/>
+                                <ui:Button name="test-state-btn" text="CMD_SET_ODRIVE_STATE" class="btn btn-outline" style="margin-right: 8px; margin-bottom: 8px;"/>
+                                <ui:Button name="test-targets-btn" text="CMD_SET_JOINT_TARGETS" class="btn btn-outline" style="margin-right: 8px; margin-bottom: 8px;"/>
+                                <ui:Button name="test-telem-btn" text="CMD_REQUEST_TELEM" class="btn btn-outline" style="margin-right: 8px; margin-bottom: 8px;"/>
+                                <ui:Button name="test-homing-btn" text="CMD_START_HOMING" class="btn btn-outline" style="margin-right: 8px; margin-bottom: 8px;"/>
+                                <ui:Button name="test-confirm-home-btn" text="CMD_CONFIRM_HOME" class="btn btn-outline" style="margin-right: 8px; margin-bottom: 8px;"/>
+                                <ui:Button name="test-param-btn" text="CMD_SET_JOINT_PARAMETER" class="btn btn-outline" style="margin-right: 8px; margin-bottom: 8px;"/>
+                                <ui:Button name="test-estop-btn" text="CMD_ESTOP" class="btn btn-outline" style="border-color: rgb(220,38,38); color: rgb(220,38,38); margin-right: 8px; margin-bottom: 8px;"/>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-direction: row;">
+                        <ui:VisualElement class="card" style="flex: 1; margin-right: 16px;">
+                            <ui:VisualElement class="card-header"><ui:Label text="Last Calibration" class="card-title"/></ui:VisualElement>
+                            <ui:VisualElement class="card-content" style="flex-direction: column;">
+                                <ui:VisualElement style="flex-direction: row; justify-content: space-between; margin-bottom: 12px;"><ui:Label text="Motor Calibration" class="text-sm" style="color: rgb(75,85,99);"/><ui:Label text="2024-03-01" class="text-sm"/></ui:VisualElement>
+                                <ui:VisualElement style="flex-direction: row; justify-content: space-between; margin-bottom: 12px;"><ui:Label text="Sensor Calibration" class="text-sm" style="color: rgb(75,85,99);"/><ui:Label text="2024-03-01" class="text-sm"/></ui:VisualElement>
+                                <ui:VisualElement style="flex-direction: row; justify-content: space-between;"><ui:Label text="Zero Position" class="text-sm" style="color: rgb(75,85,99);"/><ui:Label text="2024-03-04" class="text-sm"/></ui:VisualElement>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="card" style="flex: 1;">
+                            <ui:VisualElement class="card-header"><ui:Label text="Calibration Status" class="card-title"/></ui:VisualElement>
+                            <ui:VisualElement class="card-content" style="flex-direction: column;">
+                                <ui:VisualElement style="flex-direction: row; align-items: center; margin-bottom: 8px;">
+                                    <ui:VisualElement style="width: 8px; height: 8px; border-radius: 4px; background-color: rgb(34,197,94); margin-right: 8px;"/>
+                                    <ui:Label text="All systems calibrated" class="text-sm"/>
+                                </ui:VisualElement>
+                                <ui:Label text="Next recommended calibration: March 11, 2026" class="text-xs" style="color: rgb(75,85,99);"/>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+
+                <!-- LOGS PANEL — hidden by default -->
+                <ui:VisualElement name="logs-panel" style="display: none;">
+                    <ui:VisualElement class="card">
+                        <ui:VisualElement class="card-header" style="flex-direction: row; justify-content: space-between; align-items: center;">
+                            <ui:Label text="▶  System Logs" class="card-title"/>
+                            <ui:Button name="export-logs-btn" text="Export Logs" class="btn btn-outline btn-sm"/>
+                        </ui:VisualElement>
+                        <ui:VisualElement class="card-content" style="flex-direction: column;">
+                            <ui:ScrollView name="log-scroll" style="background-color: rgb(17,24,39); border-radius: 8px; padding: 16px; height: 384px;">
+                                <ui:VisualElement name="log-list" style="flex-direction: column;"/>
+                            </ui:ScrollView>
+                            <ui:VisualElement style="flex-direction: row; margin-top: 16px;">
+                                <ui:Button name="clear-logs-btn"  text="Clear Logs" class="btn btn-outline btn-sm" style="margin-right: 8px;"/>
+                                <ui:Button name="filter-btn"      text="Filter"     class="btn btn-outline btn-sm" style="margin-right: 8px;"/>
+                                <ui:Button name="refresh-btn"     text="Refresh"    class="btn btn-outline btn-sm"/>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+
+                <!-- Back to settings -->
+                <ui:VisualElement style="align-items: center; margin-top: 32px; margin-bottom: 32px;">
+                    <ui:Button name="back-to-settings-btn" text="Back to Settings" class="btn btn-outline btn-lg" style="width: 220px;"/>
+                </ui:VisualElement>
+
+            </ui:VisualElement>
+        </ui:ScrollView>
+    </ui:VisualElement>
+</ui:UXML>
